@@ -1,0 +1,90 @@
+﻿@model  List<MVC_StokTakipOtomasyonu.Models.Entity.Urunler>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+    @using (Html.BeginForm())
+    {
+        <div class="form-group">
+            <div style="width:25%;float:left">
+
+                @Html.TextBox("ara", null, new { @class = "form-control", @placeholder = "Aranacak ürün adı veya barkod no " })
+
+            </div>
+            <div style="float:left;margin-left:-5px">
+
+                @Html.ActionLink("Ara", "Index", null, new { @class = "btn btn-info", onclick = "$(this).parents('form').attr('action', $(this).attr('href'));$(this).parents('form').submit();return false;" })
+                @*<input type="submit" name="btn" value="Ara" class="btn btn-info"/>*@
+            </div>
+
+        </div>
+    }
+
+
+</div>
+
+<div class="container">
+    <h2 align="center">Ürünler Ana Sayfası</h2>
+    <br />
+    <table class="table table-bordered" id="urun">
+        <thead style="font-weight:bold; color:blue">
+            <tr style="width:500px">
+                @*<th>ID</th>*@
+                <th>Kategori</th>
+                <th>Marka</th>
+                <th>Ürün Adı</th>
+                <th>Barkod No</th>
+                @*<th>Alış Fiyatı</th>*@
+                <th>Satış Fiyatı</th>
+                <th>Miktarı</th>
+                <th>Birim</th>
+                @*<th>K.D.V</th>*@
+                <th>Tarih</th>
+                <th>Açıklama</th>
+                @if (User.IsInRole("A"))
+                {
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                }
+                <td></td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                
+                <tr>
+                    @*<th>@Html.DisplayFor(x => item.ID)</th>*@
+                    <td>@Html.DisplayFor(x => item.Kategoriler.Kategori)</td>
+                    <td>@Html.DisplayFor(x => item.Markalar.Marka)</td>
+                    <td>@Html.DisplayFor(x => item.UrunAdi)</td>
+                    <td>@Html.DisplayFor(x => item.BarkodNo)</td>
+                    @*<td>@Html.DisplayFor(x => item.AlisFiyati)</td>*@
+                    <td>@Html.DisplayFor(x => item.SatisFiyati)</td>
+                    <td>@Html.DisplayFor(x => item.Miktari)</td>
+
+                    <td>@Html.DisplayFor(x => item.Birimler.Birim)</td>
+                    @*<td>% @Html.DisplayFor(x => item.KDV)</td>*@
+                    <td>@item.Tarih.ToString("dd.MM.yyyy")</td>
+                    @*<td>@Html.DisplayFor(x => item.Tarih)</td>*@
+                    <td style="width:250px;">@Html.DisplayFor(x => item.Aciklama)</td>
+                    @if (User.IsInRole("A"))
+                    {
+                        <td>@Html.ActionLink("Sil", "SilBilgiGetir", new { id = item.ID }, new { @class = "btn btn-danger" })</td>
+                        <td>@Html.ActionLink("Güncelle", "GuncelleBilgiGetir", new { id = item.ID }, new { @class = "btn btn-primary" })</td>
+                        <td>@Html.ActionLink("Miktar Ekle", "MiktarEkle", new { id = item.ID }, new { @class = "btn btn-secondary" })</td>
+                    }
+                    <td>@Html.ActionLink("SepeteEkle", "SepeteEkle", "Sepet", new { id = item.ID }, new { @class = "btn btn-success" })</td>
+
+                </tr>
+    
+}
+            </tbody>
+            </table>
+            @if (User.IsInRole("A"))
+            {
+                <a href="/Urunler/Ekle/" class="btn btn-success">Ürün Ekle</a>
+            }
+            </div>

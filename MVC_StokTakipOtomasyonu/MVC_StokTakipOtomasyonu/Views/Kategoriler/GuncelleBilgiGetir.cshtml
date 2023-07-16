@@ -1,0 +1,35 @@
+﻿@model MVC_StokTakipOtomasyonu.MyModel.MyKategoriler
+@{
+    ViewBag.Title = "GuncelleBilgiGetir";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Kategori Güncelleme Sayfası</h2>
+
+<div class="container">
+    <form action="/Kategoriler/Guncelle/">
+       
+        @Html.HiddenFor(x => x.ID)
+        <div class="form-group">
+            <b>Kategori</b>
+            @Html.TextBoxFor(x => x.Kategori, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.Kategori, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            <b>Açıklama</b>
+            @Html.TextAreaFor(x => x.Aciklama, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.Aciklama, "", new { @class = "text-danger" })
+        </div>
+
+        <div>
+            <button class="btn btn-primary"> Kategori Güncelle</button>
+        </div>
+    </form>
+
+</div>
+@section scriptdanger
+{
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+}

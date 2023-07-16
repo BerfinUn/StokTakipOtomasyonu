@@ -1,0 +1,35 @@
+﻿@model MVC_StokTakipOtomasyonu.MyModel.MyBirimler
+
+@{
+    ViewBag.Title = "Ekle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Birim Kaydetme Sayfası</h2>
+<div class="container">
+    @using (Html.BeginForm("Kaydet", "Birimler", FormMethod.Post))
+    {
+        @Html.ValidationSummary(false, null, new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.HiddenFor(x => x.ID)
+            @Html.LabelFor(x => x.Birim)
+            @Html.TextBoxFor(x => x.Birim, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.Birim, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(x => x.Aciklama)
+            @Html.TextAreaFor(x => x.Aciklama, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.Aciklama, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            <button class="btn btn-success">Kaydet</button>
+        </div>
+    }
+
+</div>
+@section scriptdanger
+{
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+}

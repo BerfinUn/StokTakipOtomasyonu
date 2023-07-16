@@ -1,0 +1,60 @@
+﻿@model List<MVC_StokTakipOtomasyonu.Models.Entity.Satislar>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Satış Bilgi Sayfası</h2>
+
+<table class="table table-bordered table-striped">
+
+    <tr>
+        <th>ID</th>
+        <td>Kullanıcı Ad Soyad</td>
+        <td>Ürün Adı</td>
+        <td>Barkod No</td>
+        <td>Birim Fiyatı</td>
+        <td>Miktarı</td>
+        <td>Toplam Fiyatı</td>
+        <td>K.D.V.</td>
+        <td>Birimi</td>
+        <td>Tarih</td>
+        <td>Saat</td>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+  <tr>
+            <th>@Html.DisplayFor(x => item.ID)</th>
+            <td>@Html.DisplayFor(x => item.Kullanicilar.AdiSoyadi)</td>
+            <td>@Html.DisplayFor(x => item.Urunler.UrunAdi)</td>
+            <td>@Html.DisplayFor(x => item.BarkodNo)</td>
+            <td>@Html.DisplayFor(x => item.BirimFiyati)</td>
+            <td>@Html.DisplayFor(x => item.Miktari)</td>
+            <td>@Html.DisplayFor(x => item.ToplamFiyati)</td>
+            <td>@Html.DisplayFor(x => item.KDV)</td>
+            <td>@Html.DisplayFor(x => item.Urunler.Birimler.Birim)</td>
+            <td>@item.Tarih.ToString("dd.MM.yyyy")</td>
+            <td>@item.Saat.ToString("dd.MM.yyyy HH:mm:ss")</td>
+  </tr>
+
+    }
+
+
+
+    <!--<tr>-->
+    @*<th>@Html.DisplayFor(x => item.ID)</th>
+        <td>@Html.DisplayFor(x => item.Kullanicilar.AdiSoyadi)</td>
+        <td>@Html.DisplayFor(x => item.Urunler.UrunAdi)</td>
+        <td>@Html.DisplayFor(x => item.BarkodNo)</td>
+        <td>@Html.DisplayFor(x => item.BirimFiyati)</td>
+        <td>@Html.DisplayFor(x => item.Miktari)</td>
+        <td>@Html.DisplayFor(x => item.ToplamFiyati)</td>
+        <td>@Html.DisplayFor(x => item.KDV)</td>
+        <td>@Html.DisplayFor(x => item.Urunler.Birimler.Birim)</td>
+        <td>@Html.DisplayFor(x => item.Tarih.ToString("dd.MM.yyyy"))</td>
+        <td>@Html.DisplayFor(x => item.Saat)</td>*@
+    <!--</tr>-->
+
+</table>

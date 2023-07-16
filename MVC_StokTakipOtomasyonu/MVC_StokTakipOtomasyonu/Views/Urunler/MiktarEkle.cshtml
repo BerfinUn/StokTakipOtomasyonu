@@ -1,0 +1,29 @@
+﻿@model MVC_StokTakipOtomasyonu.Models.Entity.Urunler
+@{
+    ViewBag.Title = "MiktarEkle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Ürün Miktar Ekleme Sayfası</h2>
+<div class="container">
+    @using (Html.BeginForm("MiktarEkle", "Urunler", FormMethod.Post))
+    {
+        <div class="form-group">
+            @Html.LabelFor(x => x.ID)
+            @Html.TextBoxFor(x => x.ID, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            @*@Html.LabelFor(x => x.Miktari)*@
+            <label>Miktarı</label>
+            @Html.TextBoxFor(x => x.Miktari, new { @class = "form-control" })
+        </div>
+        <div><button class="btn btn-secondary" style="width:150px">Miktar Ekle</button></div>
+
+
+
+
+
+    }
+
+</div>
+

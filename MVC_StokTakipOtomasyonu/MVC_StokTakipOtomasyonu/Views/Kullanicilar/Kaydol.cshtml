@@ -1,0 +1,88 @@
+﻿@model MVC_StokTakipOtomasyonu.Models.Entity.Kullanicilar
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Kullanıcı Kayıt Sayfası</title>
+    <link href="~/css/styledanger.css" rel="stylesheet" />
+    <link href="~/LoginScriptler/Scriptler/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body class="container col-md-7" style="background-color: #f0f0f0">
+    <br />
+    @using (Html.BeginForm("Kaydol", "Kullanicilar", FormMethod.Post))
+    {
+        <div style="height:50px; background-color:#0094ff;color:white;text-align:center">
+            <p style="margin-top:auto;margin-bottom:auto;font-size:30px">Kullanıcı Kayıt Sayfası</p>
+        </div>
+
+        <div style="margin-top:20px;">
+            @*@Html.LabelFor(x => x.KullaniciAdi)*@
+            <label>Kullanıcı Adı</label>
+            @Html.TextBoxFor(x => x.KullaniciAdi, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.KullaniciAdi, null, new { @class = "text-danger" })
+        </div>
+
+        <div style="margin-top:20px;">
+            @*@Html.LabelFor(x => x.Sifre)*@
+            <label>Şifre</label>
+            @Html.PasswordFor(x => x.Sifre, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.Sifre, null, new { @class = "text-danger" })
+        </div>
+
+        <div style="margin-top:20px;">
+            @*@Html.LabelFor(x => x.AdiSoyadi)*@
+            <label>Ad Soyad</label>
+            @Html.TextBoxFor(x => x.AdiSoyadi, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.AdiSoyadi, null, new { @class = "text-danger" })
+        </div>
+
+
+
+        <div style="margin-top:20px;">
+            @Html.LabelFor(x => x.Telefon)
+            @Html.TextBoxFor(x => x.Telefon, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.Telefon, null, new { @class = "text-danger" })
+        </div>
+
+        <div style="margin-top:20px;">
+            @Html.LabelFor(x => x.Adres)
+            @Html.TextAreaFor(x => x.Adres, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.Adres, null, new { @class = "text-danger" })
+        </div>
+
+        <div style="margin-top:20px;">
+            @*@Html.LabelFor(x => x.Email)*@
+            <label>E-Mail</label>
+            @Html.TextBoxFor(x => x.Email, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.Email, null, new { @class = "text-danger" })
+        </div>
+
+        <div style="margin-top:20px;">
+            @Html.LabelFor(x => x.Tarih)
+            @Html.TextBoxFor(x => x.Tarih, new { @class = "form-control", type = "date" })
+            @Html.ValidationMessageFor(x => x.Tarih, null, new { @class = "text-danger" })
+        </div>
+        @*<div style="margin-top:20px">
+                <button class="btn btn-primary form-control">Kayıt Ol</button>
+            </div>*@
+    
+        <div style="margin-top:20px">
+            <button class="btn btn-primary form-control" style="width:100px">Kayıt Ol</button>
+            <a href="/Kullanicilar/Login" class="btn btn-dark" style="float:right;width:100px">Geri</a>
+        </div>
+        <p></p>
+
+    }
+
+</body>
+</html>
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+

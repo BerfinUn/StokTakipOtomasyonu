@@ -1,0 +1,48 @@
+﻿@model List<MVC_StokTakipOtomasyonu.Models.Entity.Markalar>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Marka Listesi</h2>
+<table class="table table-striped">
+    <thead style="font-weight:bold; color:blue">
+        <tr>
+            <td>ID</td>
+            <td>Kategori</td>
+            <td>Marka</td>
+            <td>Açıklama</td>
+            @if (User.IsInRole("A"))
+            {
+                <td>Sil</td>
+                <td>Güncelle</td>
+            }
+            <td>Ürünler</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th>
+                    @*@item.ID*@
+                    @Html.DisplayFor(x => item.ID)
+                </th>
+                <td> @Html.DisplayFor(x => item.Kategoriler.Kategori)</td>
+                <td> @Html.DisplayFor(x => item.Marka)</td>
+                <td> @Html.DisplayFor(x => item.Aciklama)</td>
+                @if (User.IsInRole("A"))
+                {
+                    <td><a href="/Markalar/SilBilgiGetir/@item.ID" class="btn btn-danger">Sil</a></td>
+                    @*<td>@Html.ActionLink("Sil Butonu", "Sil", new { id = item.ID }, new { onclick = "return confirm('Kayıt Silinsin Mi?')" })</td>*@
+                    <td><a href="/Markalar/GuncelleBilgiGetir/@item.ID" class="btn btn-primary">Güncelle</a></td>
+                }
+                <td><a href="/Markalar/Urunler/@item.ID" class="btn btn-secondary">Ürünler</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+@if (User.IsInRole("A"))
+{
+    <a href="/Markalar/Ekle/" class="btn btn-success">Marka Ekle</a>
+}

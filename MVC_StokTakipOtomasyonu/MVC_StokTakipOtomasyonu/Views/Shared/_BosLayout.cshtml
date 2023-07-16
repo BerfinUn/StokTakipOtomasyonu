@@ -1,0 +1,101 @@
+﻿@using MVC_StokTakipOtomasyonu.ActiveFolder
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Stok Takip Otomasyonu Sitesi</title>
+
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+
+    <link href="~/LoginScriptler/Scriptler/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <link href="~/css/styles.css" rel="stylesheet" />
+
+</head>
+<body class="d-flex flex-column h-100" >
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #41435c ">
+        <div class="container px-5">
+            <a class="navbar-brand" href="#">Stok Takip Otomasyonu</a>
+            <button class="navbar-toggler navbar-toggle-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+
+                    <li class="nav-item @Html.ActivePage("Home","Index")">
+                        <a class="nav-link" href="/Home/Index">Ana Sayfa</a>
+                    </li>
+                    <li class="nav-item @Html.ActivePage("Home","Hakkimizda")">
+                        <a class="nav-link" href="/Home/Hakkimizda">Hakkımızda</a>
+                    </li>
+
+                    <li class="nav-item @Html.ActivePage("Home","Hizmetlerimiz")">
+                        <a class="nav-link" href="/Home/Hizmetlerimiz">Hizmetlerimiz</a>
+                    </li>
+
+                    <li class="nav-item @Html.ActivePage("Home","Iletisim")">
+                        <a class="nav-link" href="/Home/Iletisim">İletişim</a>
+                    </li>
+
+                    <li class="nav-item @Html.ActivePage("Home","Urunler")">
+                        <a class="nav-link" href="/Home/Urunler">Ürünler</a>
+                    </li>
+
+                    <li class="nav-item dropdown @Html.ActivePage("Home","Kategoriler")">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdownKategori" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Kategoriler
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownKategori">
+                            @{
+                                var db = new MVC_StokTakipOtomasyonu.Models.Entity.MVC_StokTakipOtomasyonuEntities();
+                                var modelk = db.Kategoriler.ToList();
+                                foreach (var item in modelk)
+                                {
+                                    <a class="dropdown-item" href="/Home/Kategoriler/@item.ID">@item.Kategori</a>
+                                }
+                            }
+                        </div>
+                    </li>
+
+                    <li class="nav-item dropdown @Html.ActivePage("Home","Markalar")">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdownMarka" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Markalar
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMarka">
+                            @{
+
+                                var modelm = db.Markalar.ToList();
+                                foreach (var item in modelm)
+                                {
+                                    <a class="dropdown-item" href="/Home/Markalar/@item.ID">@item.Marka</a>
+                                }
+                            }
+                        </div>
+                    </li>
+                    <li class="nav-item @Html.ActivePage("Home","Urunler")">
+                        <a class="nav-link" href="/Kullanicilar/Login">Giriş Yap</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        @RenderBody()
+    </div>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/bootbox.min.js"></script>
+    <script src="~/Scripts/bootbox.js"></script>
+    <script src="~/lib/bootstrap/js/bootstrap.bundle.js"></script>
+    <link href="~/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
+</body>
+</html>

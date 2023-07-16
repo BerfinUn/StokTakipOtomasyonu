@@ -1,0 +1,191 @@
+﻿@model List<MVC_StokTakipOtomasyonu.Models.Entity.Sepet>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2 class="container">@User.Identity.Name</h2>
+<h3 class="container">Sepetim</h3>
+<br />
+<form action="/Sepet/SeciliSil/" method="post" class="container">
+    <div>
+        <div style="float:left">
+            <input type="button" name="btnSecili" value="Seçili Satın Al" class="btn btn-info" id="btnSecili" />
+        </div>
+        <div style="float:right">
+            <input type="submit" name="submitbtn" value="Seçili Sil" class="btn btn-danger" />
+        </div>
+    </div> <br />
+
+    <table class="table table-bordered" id="tblsepet" style="margin-top:20px">
+        <thead style=" background-color:aliceblue">
+            <tr>
+                <th><input type="checkbox" name="secim" id="secim" value="" /></th>
+                <th>Ürün Bilgisi</th>
+                <td>Birim Fiyatı</td>
+                <td>Miktarı</td>
+                <td>Toplam Fiyatı</td>
+                <td>Tarih</td>
+                <td></td>
+                <td></td>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <th><input type="checkbox" name="secim_id" id="secimid" class="secimid" value="@item.ID" data-id="@item.Urunler.UrunAdi" /></th>
+                    <th>@item.Urunler.Kategoriler.Kategori @item.Urunler.Markalar.Marka @item.Urunler.BarkodNo-@item.Urunler.UrunAdi</th>
+                    <td>@item.BirimFiyati</td>
+                    <td>
+                        <div>
+                            @Html.ActionLink("-", "Azalt", new { id = item.ID }, new { @class = "btn btn-secondary btn-sm azalt" })
+                        </div>
+                        @Html.TextBoxFor(x => item.Miktari, new { @class = "txt", data_id = item.ID })
+                        <div>
+                            @Html.ActionLink("+", "Arttir", new { id = item.ID }, new { @class = "btn btn-info btn-sm arttir" })
+                        </div>
+                    </td>
+                    <td>@item.ToplamFiyati</td>
+                    <td>@item.Tarih.ToString("dd.MM.yyyy")</td>
+                    <td>@Html.ActionLink("Sil", "Sil", new { id = item.ID }, new { @class = "btn btn-danger" })</td>
+                    <td>@Html.ActionLink("Satın Al", "SatinAl", "Satislar", new { id = item.ID }, new { @class = "btn btn-success" })</td>
+
+
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</form>
+<div class="container">
+    @ViewBag.Tutar
+</div>
+
+<br />
+<br />
+
+<div class="container form-group">
+    @Html.ActionLink("Hepsini Satın Al", "HepsiniSatinAl", "Satislar", null, new { @class = "btn btn-success" })
+</div>
+
+<div class="container form-group">
+    @Html.ActionLink("Hepsini Sil", "HepsiniSil", null, new { @class = "btn btn-danger" })
+</div>
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+
+<style>
+    .txt {
+        line-height: 18px;
+        /* padding: 0 4px 10px 4px;*/
+        width: 50px !important;
+        height: 32px;
+        font-size: 14px;
+        text-align: center;
+        border: solid 1px #ccc;
+        margin-left: 23px;
+    }
+
+    .arttir {
+        display: block;
+        cursor: pointer;
+        /*  width:25px;
+        background:#e2e2e2;
+        height:30px;*/
+        /*border:solid 1px #ccc;
+        text-align:center;
+        line-height:30px;*/
+        /*color:grey;*/
+        /* font-size:18px;*/
+        position: absolute;
+        margin-top: -32px;
+        margin-left: 72px;
+    }
+
+    .azalt {
+        display: block;
+        cursor: pointer;
+        /* width: 25px;
+        background: #e2e2e2;
+        height: 30px;
+        border: solid 1px #ccc;
+        text-align: center;
+        line-height: 30px;
+        color: grey;
+        font-size: 18px;*/
+        position: absolute;
+    }
+</style>
+
+
+<script>
+    $(function () {
+        $('.txt').on('change', function () {
+            var miktar = $(this).val();
+            var sepetid = $(this).attr('data-id');
+            alert("SepetID=" + sepetid + "  Miktarı=" + miktar);
+            $.ajax({
+                url: '/Sepet/DinamikMiktar/',
+                data: { id: sepetid, miktari: miktar },
+                success: function (res) {
+                    document.location.reload();
+
+                }
+            });
+
+        });
+
+    });
+</script>
+
+
+<script>
+    $(document).ready(function () {
+        $("#secim").click(function () {
+            if ($(this).is(":checked")) {
+                $(".secimid").prop('checked', true)
+
+            }
+            else {
+                $(".secimid").prop('checked', false)
+            }
+        });
+    });
+</script>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#btnSecili").click(function () {
+            addfunction();
+        });
+    });
+    var items = [];
+    function addfunction() {
+        $.each($("#tblsepet input[type=checkbox]:checked"),
+            function (data, index) {
+                items.push({
+                    'ID': $(this).val(),
+                    'Urunler.UrunAdi': $(this).attr('data-id')
+
+                });
+            });
+        $.ajax({
+            type: "POST",
+            url: "/Sepet/SeciliSatinAl",
+            data: { data: items },
+            success: function (data) {
+                document.open();
+                document.write(data);
+                document.close();
+            },
+            error: function () {
+                alert("Hay aksi bir hata oluştu");
+            }
+        });
+    }
+</script>
+
+
+

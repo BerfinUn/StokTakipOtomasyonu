@@ -1,0 +1,45 @@
+﻿@model List<MVC_StokTakipOtomasyonu.Models.Entity.Urunler>
+@{
+    ViewBag.Title = "Urunler";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.k-@ViewBag.m Grubundaki Ürünler</h2>
+
+<table class="table table-bordered">
+    <thead style="font-weight:bold; color:blue">
+        <tr style="width:500px">
+            <th>ID</th>
+            <th>Ürün Adı</th>
+            <th>Barkod No</th>
+            <th>Alış Fiyatı</th>
+            <th>Satış Fiyatı</th>
+            <th>Miktarı</th>
+            <th>Birim</th>
+            <th>K.D.V</th>
+            <th>Tarih</th>
+            <th>Açıklama</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+
+            <tr>
+                <th>@Html.DisplayFor(x => item.ID)</th>
+                <td>@Html.DisplayFor(x => item.UrunAdi)</td>
+                <td>@Html.DisplayFor(x => item.BarkodNo)</td>
+                <td>@Html.DisplayFor(x => item.AlisFiyati)</td>
+                <td>@Html.DisplayFor(x => item.SatisFiyati)</td>
+                <td>@Html.DisplayFor(x => item.Miktari)</td>
+                <td>@Html.DisplayFor(x => item.Birimler.Birim)</td>
+                <td>% @Html.DisplayFor(x => item.KDV)</td>
+                <td>@item.Tarih.ToString("dd.MM.yyyy")</td>
+                <td style="width:250px;">@Html.DisplayFor(x => item.Aciklama)</td>
+
+            </tr>
+
+        }
+    </tbody>
+</table>

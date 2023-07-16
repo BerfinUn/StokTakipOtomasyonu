@@ -1,0 +1,22 @@
+﻿@model List<MVC_StokTakipOtomasyonu.Models.Entity.Markalar>
+@{
+    ViewBag.Title = "Markalar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.viewkategori Kategorisi</h2>
+<table class="table table-bordered table-striped" >
+    <tr>
+        <th>ID</th>
+        <th>Marka</th>
+        <th>Açıklama</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <th>@item.ID</th>
+            <td>@item.Marka</td>
+            <td>@item.Aciklama</td>
+        </tr>
+    }
+</table>

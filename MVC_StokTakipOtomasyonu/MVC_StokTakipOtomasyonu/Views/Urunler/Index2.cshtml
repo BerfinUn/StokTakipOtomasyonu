@@ -1,0 +1,72 @@
+﻿@model List<MVC_StokTakipOtomasyonu.Models.Entity.Urunler>
+
+@{
+    ViewBag.Title = "Index2";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+    @using (Html.BeginForm("Index2", "Urunler", FormMethod.Get))
+    {
+        <div class="form-group">
+            <div style="width:25%;float:left">
+
+                @Html.TextBox("ara", null, new { @class = "form-control", @placeholder = "Aranacak ürün adı veya barkod no " })
+
+            </div>
+            <div style="float:left;margin-left:-5px">
+                @Html.ActionLink("Ara", "Index2", null, new { @class = "btn btn-info", onclick = "$(this).parents('form').attr('action', $(this).attr('href'));$(this).parents('form').submit();return false;" })
+                @*<input type="submit" name="btn" value="Ara" class="btn btn-info"/>*@
+            </div>
+
+        </div>
+    }
+
+
+</div>
+
+<h2>WebGrid ile Listeleme</h2>
+
+@*cshar kodları yazıyoruz*@
+@{
+    var grid = new WebGrid(source:Model, rowsPerPage:5);
+    @grid.GetHtml(tableStyle: "table table-bordered table-striped", htmlAttributes: new { id = "grid" },
+    columns: grid.Columns(
+        //birim ve açıklamada sıralama olmayacağı için koyu renkte tabloda
+        grid.Column(columnName: "ID", header: "ID"),
+        grid.Column(columnName: "UrunAdi", header: "Ürün Adı"),
+        grid.Column(columnName: "Kategoriler.Kategori", header: "Kategori"),
+        grid.Column(columnName: "Markalar.Marka", header: "Marka"),
+        grid.Column(columnName: "BarkodNo", header: "Barkod"),
+        grid.Column(columnName: "AlisFiyati", header: "Alış Fiyatı", format: x => x.AlisFiyati.ToString("0.0")),
+        grid.Column(columnName: "SatisFiyati", header: "Satış Fiyatı", format: x => x.SatisFiyati.ToString("0.0")),
+        grid.Column(columnName: "Miktari", header: "Miktarı", format: x => x.Miktari.ToString("0.##")),
+        grid.Column(columnName: "KDV", header: "K.D.V"),
+        grid.Column(columnName: "Birimler.Birim", header: "Birim", canSort: false),
+        grid.Column(columnName: "Tarih", header: "Tarih", format: x => x.Tarih.ToString("dd.MM.yyyy")),
+        grid.Column(columnName: "Aciklama", header: "Açıklama", canSort: false)
+        )
+    )
+    @Html.Hidden("dir", grid.SortDirection) //artan ve azalana göre yapacağımız için gizleyen tanımlama
+    @Html.Hidden("col", grid.SortColumn)
+
+}
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script>
+    $(function () {
+        var dir = $("#dir").val();
+        var col = $("#col").val();
+        try {
+            var header = $("th a[href*=" + col + "]");
+            if (dir == "Ascending") { /*ilişkili tablolarda ok işareti gelmiyor kategori ve markada*/
+                header.text(header.text() + "  ↑");
+            }
+            if (dir == "Descending") {
+                header.text(header.text() + "  ↓");
+            }
+        } catch (e) {
+
+        }
+    })
+</script>
+ 

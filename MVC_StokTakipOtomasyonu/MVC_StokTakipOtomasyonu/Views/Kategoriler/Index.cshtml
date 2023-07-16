@@ -1,0 +1,53 @@
+﻿@using MVC_StokTakipOtomasyonu.Models.Entity;
+@model List<MVC_StokTakipOtomasyonu.Models.Entity.Kategoriler>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+    <h2 align="center">Kategori Ana Sayfası</h2>
+    <br />
+    <table class="table table-bordered">
+        <thead style="font-weight:bold; color:blue">
+            @*sütun başlıkları için*@
+            <tr>
+                <td>ID</td>
+                <td>Kategori</td>
+                <td>Açıklama</td>
+                @if (User.IsInRole("A"))
+                {
+                    <td>Sil</td>
+                    <td>Güncelle</td>
+                }
+                <td>Markalar</td>
+                <td>Ürünler</td>
+            </tr>
+
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.ID</td>
+                    <td>@item.Kategori</td>
+                    <td>@item.Aciklama</td>
+                    @if (User.IsInRole("A"))
+                    {
+                        <td><a href="/Kategoriler/SilBilgiGetir/@item.ID" class="btn btn-danger">Sil</a></td>
+                        <td><a href="/Kategoriler/GuncelleBilgiGetir/@item.ID" class="btn btn-warning">Güncelle</a></td>
+                    }
+                    <td><a href="/Kategoriler/Markalar/@item.ID" class="btn btn-secondary">Markalar</a></td>
+                    <td><a href="/Kategoriler/Urunler/@item.ID" class="btn btn-info">Ürünler</a></td>
+                </tr>
+
+            }
+        </tbody>
+
+
+    </table>
+    @if (User.IsInRole("A"))
+    {
+        <a href="/Kategoriler/Ekle/" class="btn btn-success" style="margin-top:10px; width:150px; ">Kategori Ekle</a>
+    }
+</div>

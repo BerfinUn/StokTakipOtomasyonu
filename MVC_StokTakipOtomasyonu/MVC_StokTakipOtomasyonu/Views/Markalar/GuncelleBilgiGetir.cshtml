@@ -1,0 +1,43 @@
+﻿@model MVC_StokTakipOtomasyonu.MyModel.MyMarkalar
+@{
+    ViewBag.Title = "GuncelleBilgiGetir";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Marka Güncelleme Sayfası</h2>
+<div class="container">
+    @using (Html.BeginForm("Guncelle", "Markalar"))
+    {
+        @Html.ValidationSummary(false, null, new { @class = "text-danger" })
+        @Html.HiddenFor(x => x.ID)
+        <div class="form-group">
+            @Html.LabelFor(x => x.Kategoriler.Kategori)
+            @Html.DropDownListFor(x => x.KategoriID, (List<SelectListItem>)ViewBag.l, "Seçiniz", new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.KategoriID, null, new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @*@Html.LabelFor(x => x.Marka)*@
+            <label>Marka</label>
+            @Html.TextBoxFor(x => x.Marka, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.Marka, null, new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @*@Html.LabelFor(x => x.Aciklama)*@
+            <label>Açıklama</label>
+            @Html.TextAreaFor(x => x.Aciklama, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.Aciklama, null, new { @class = "text-danger" })
+        </div>
+
+        <div><button class="btn btn-primary" style="width=150px; ">Marka Güncelle</button></div>
+
+    }
+</div>
+@section scriptdanger
+    {
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+}
+
+

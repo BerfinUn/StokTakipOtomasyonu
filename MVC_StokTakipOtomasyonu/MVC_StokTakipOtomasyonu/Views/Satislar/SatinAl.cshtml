@@ -1,0 +1,39 @@
+﻿@model MVC_StokTakipOtomasyonu.Models.Entity.Sepet
+@{
+    ViewBag.Title = "SatinAl";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="modal-header">
+    <h2>Satın Alma Sayfası</h2>
+</div>
+
+<div class="container">
+    @using (Html.BeginForm("SatinAl2", "Satislar", FormMethod.Post))
+    {
+        <div class="modal-body">
+            @Html.HiddenFor(x => x.ID)
+
+            <div class="form-group">
+                Kullanıcı Ad Soyad:@Html.DisplayFor(x => x.Kullanicilar.AdiSoyadi, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                Ürün Adı:@Html.DisplayFor(x => x.Urunler.UrunAdi, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                Birim Fiyatı:@Html.DisplayFor(x => x.BirimFiyati, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                Miktarı:@Html.DisplayFor(x => x.Miktari, new { @class = "form-control" })
+            </div>
+            <div class="form-group text-center"style="font-size:25px;color:red">
+                Toplam Fiyatı:@Html.DisplayFor(x => x.ToplamFiyati, new { @class = "form-control" })
+            </div>
+
+        </div>
+        <div class="modal-footer" style="float:right">
+           <button class=" btn btn-success">Satın Al</button>
+            <a href="/Sepet/Index" class="btn btn-dark">Çıkış</a>
+           
+        </div>
+    }
+</div>

@@ -1,0 +1,795 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{DB547C53-65AE-47D7-89EC-E7038F1B9715}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MVC_StokTakipOtomasyonu</RootNamespace>
+    <AssemblyName>MVC_StokTakipOtomasyonu</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44339</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BouncyCastle.Cryptography, Version=2.0.0.0, Culture=neutral, PublicKeyToken=072edcf4a5328938, processorArchitecture=MSIL">
+      <HintPath>..\packages\BouncyCastle.Cryptography.2.2.1\lib\net461\BouncyCastle.Cryptography.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="MailKit, Version=4.1.0.0, Culture=neutral, PublicKeyToken=4e064fe7c44a8f1b, processorArchitecture=MSIL">
+      <HintPath>..\packages\MailKit.4.1.0\lib\net47\MailKit.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MimeKit, Version=4.1.0.0, Culture=neutral, PublicKeyToken=bede1c8a46c66814, processorArchitecture=MSIL">
+      <HintPath>..\packages\MimeKit.4.1.0\lib\net47\MimeKit.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Formats.Asn1, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Formats.Asn1.7.0.0\lib\net462\System.Formats.Asn1.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.DurableInstancing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ActiveFolder\ActiveClass.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\BirimlerController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\KategorilerController.cs" />
+    <Compile Include="Controllers\KullanicilarController.cs" />
+    <Compile Include="Controllers\MarkalarController.cs" />
+    <Compile Include="Controllers\SatislarController.cs" />
+    <Compile Include="Controllers\SepetController.cs" />
+    <Compile Include="Controllers\UrunlerController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity\Birimler.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity\Kategoriler.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity\Kullanicilar.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity\kullaniciRolleri.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity\Markalar.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity\Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity\Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity\Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity\Musteriler.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity\Roller.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity\Satislar.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity\Sepet.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity\sysdiagrams.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity\Urunler.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MyModel\MyBirimler.cs" />
+    <Compile Include="MyModel\MyKategoriler.cs" />
+    <Compile Include="MyModel\MyMarkalar.cs" />
+    <Compile Include="MyModel\MyUrunler.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Roller\KullaniciRolleri.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\favicon.ico" />
+    <Content Include="Content\bootstrap-datepicker.css" />
+    <Content Include="Content\bootstrap-datepicker3.css" />
+    <Content Include="css\css1.css" />
+    <Content Include="css\styledanger.css" />
+    <Content Include="css\styles.css" />
+    <Content Include="deneme\about.html" />
+    <Content Include="deneme\assets\favicon.ico" />
+    <Content Include="deneme\assets\img\about.jpg" />
+    <Content Include="deneme\assets\img\bg.jpg" />
+    <Content Include="deneme\assets\img\intro.jpg" />
+    <Content Include="deneme\assets\img\products-01.jpg" />
+    <Content Include="deneme\assets\img\products-02.jpg" />
+    <Content Include="deneme\assets\img\products-03.jpg" />
+    <Content Include="deneme\css\styles.css" />
+    <Content Include="deneme\deneme1\css\bootstrap.min.css" />
+    <Content Include="deneme\deneme1\css\bootstrap\mixins\_border-radius.css" />
+    <Content Include="deneme\deneme1\css\bootstrap\mixins\_screen-reader.css" />
+    <Content Include="deneme\deneme1\css\bootstrap\mixins\_transition.css" />
+    <Content Include="deneme\deneme1\css\bootstrap\mixins\_visibility.css" />
+    <Content Include="deneme\deneme1\css\bootstrap\utilities\_stretched-link.css" />
+    <Content Include="deneme\deneme1\css\bootstrap\_media.css" />
+    <Content Include="deneme\deneme1\css\style.css" />
+    <Content Include="deneme\deneme1\images\bg-1.jpg" />
+    <Content Include="deneme\deneme1\index.html" />
+    <Content Include="deneme\deneme1\js\bootstrap.min.js" />
+    <Content Include="deneme\deneme1\js\jquery.min.js" />
+    <Content Include="deneme\deneme1\js\main.js" />
+    <Content Include="deneme\deneme1\js\popper.js" />
+    <Content Include="deneme\deneme1\main.html" />
+    <Content Include="deneme\index.html" />
+    <Content Include="deneme\js\scripts.js" />
+    <Content Include="deneme\products.html" />
+    <Content Include="deneme\store.html" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="GenelScripts\about.html" />
+    <Content Include="GenelScripts\assets\favicon.ico" />
+    <Content Include="GenelScripts\blog-home.html" />
+    <Content Include="GenelScripts\blog-post.html" />
+    <Content Include="GenelScripts\contact.html" />
+    <Content Include="GenelScripts\css\styles.css" />
+    <Content Include="GenelScripts\faq.html" />
+    <Content Include="GenelScripts\index.html" />
+    <Content Include="GenelScripts\js\scripts.js" />
+    <Content Include="GenelScripts\portfolio-item.html" />
+    <Content Include="GenelScripts\portfolio-overview.html" />
+    <Content Include="GenelScripts\pricing.html" />
+    <Content Include="Global.asax" />
+    <Content Include="img\bebek.jpg" />
+    <Content Include="img\biz.jpg" />
+    <Content Include="img\canta.jpg" />
+    <Content Include="img\evaleti.jpg" />
+    <Content Include="img\evtemizlik.jpg" />
+    <Content Include="img\giyim.jpg" />
+    <Content Include="img\gıda.png" />
+    <Content Include="img\hizmet.jpg" />
+    <Content Include="img\kozmetik.jpg" />
+    <Content Include="img\kırtasiye.jpg" />
+    <Content Include="img\misyon.jpg" />
+    <Content Include="img\oyuncak.jpg" />
+    <Content Include="img\petshop.png" />
+    <Content Include="img\sepet.png" />
+    <Content Include="img\spor.jpg" />
+    <Content Include="img\vizyon.jpg" />
+    <Content Include="img\züccaciye.png" />
+    <Content Include="js\scripts.js" />
+    <Content Include="lib\bootstrap\css\bootstrap-grid.css" />
+    <Content Include="lib\bootstrap\css\bootstrap-grid.min.css" />
+    <Content Include="lib\bootstrap\css\bootstrap-grid.rtl.css" />
+    <Content Include="lib\bootstrap\css\bootstrap-grid.rtl.min.css" />
+    <Content Include="lib\bootstrap\css\bootstrap-reboot.css" />
+    <Content Include="lib\bootstrap\css\bootstrap-reboot.min.css" />
+    <Content Include="lib\bootstrap\css\bootstrap-reboot.rtl.css" />
+    <Content Include="lib\bootstrap\css\bootstrap-reboot.rtl.min.css" />
+    <Content Include="lib\bootstrap\css\bootstrap-utilities.css" />
+    <Content Include="lib\bootstrap\css\bootstrap-utilities.min.css" />
+    <Content Include="lib\bootstrap\css\bootstrap-utilities.rtl.css" />
+    <Content Include="lib\bootstrap\css\bootstrap-utilities.rtl.min.css" />
+    <Content Include="lib\bootstrap\css\bootstrap.css" />
+    <Content Include="lib\bootstrap\css\bootstrap.min.css" />
+    <Content Include="lib\bootstrap\css\bootstrap.rtl.css" />
+    <Content Include="lib\bootstrap\css\bootstrap.rtl.min.css" />
+    <Content Include="lib\bootstrap\js\bootstrap.bundle.js" />
+    <Content Include="lib\bootstrap\js\bootstrap.bundle.min.js" />
+    <Content Include="lib\bootstrap\js\bootstrap.esm.js" />
+    <Content Include="lib\bootstrap\js\bootstrap.esm.min.js" />
+    <Content Include="lib\bootstrap\js\bootstrap.js" />
+    <Content Include="lib\bootstrap\js\bootstrap.min.js" />
+    <Content Include="LoginScriptler\Scriptler\css\main.css" />
+    <Content Include="LoginScriptler\Scriptler\css\util.css" />
+    <Content Include="LoginScriptler\Scriptler\fonts\font-awesome-4.7.0\css\font-awesome.css" />
+    <Content Include="LoginScriptler\Scriptler\fonts\font-awesome-4.7.0\css\font-awesome.min.css" />
+    <Content Include="LoginScriptler\Scriptler\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.svg" />
+    <Content Include="LoginScriptler\Scriptler\fonts\font-awesome-4.7.0\HELP-US-OUT.txt" />
+    <Content Include="LoginScriptler\Scriptler\fonts\Linearicons-Free-v1.0.0\icon-font.min.css" />
+    <Content Include="LoginScriptler\Scriptler\fonts\Linearicons-Free-v1.0.0\WebFont\Linearicons-Free.svg" />
+    <Content Include="LoginScriptler\Scriptler\fonts\montserrat\OFL.txt" />
+    <Content Include="LoginScriptler\Scriptler\images\bg-01.jpg" />
+    <Content Include="LoginScriptler\Scriptler\images\icons\favicon.ico" />
+    <Content Include="LoginScriptler\Scriptler\images\resim1.jpg" />
+    <Content Include="LoginScriptler\Scriptler\images\resim2.png" />
+    <Content Include="LoginScriptler\Scriptler\js\main.js" />
+    <Content Include="LoginScriptler\Scriptler\vendor\animate\animate.css" />
+    <Content Include="LoginScriptler\Scriptler\vendor\animsition\css\animsition.css" />
+    <Content Include="LoginScriptler\Scriptler\vendor\animsition\css\animsition.min.css" />
+    <Content Include="LoginScriptler\Scriptler\vendor\animsition\js\animsition.js" />
+    <Content Include="LoginScriptler\Scriptler\vendor\animsition\js\animsition.min.js" />
+    <Content Include="LoginScriptler\Scriptler\vendor\bootstrap\css\bootstrap-grid.css" />
+    <Content Include="LoginScriptler\Scriptler\vendor\bootstrap\css\bootstrap-grid.min.css" />
+    <Content Include="LoginScriptler\Scriptler\vendor\bootstrap\css\bootstrap-reboot.css" />
+    <Content Include="LoginScriptler\Scriptler\vendor\bootstrap\css\bootstrap-reboot.min.css" />
+    <Content Include="LoginScriptler\Scriptler\vendor\bootstrap\css\bootstrap.css" />
+    <Content Include="LoginScriptler\Scriptler\vendor\bootstrap\css\bootstrap.min.css" />
+    <Content Include="LoginScriptler\Scriptler\vendor\bootstrap\js\bootstrap.js" />
+    <Content Include="LoginScriptler\Scriptler\vendor\bootstrap\js\bootstrap.min.js" />
+    <Content Include="LoginScriptler\Scriptler\vendor\bootstrap\js\popper.js" />
+    <Content Include="LoginScriptler\Scriptler\vendor\bootstrap\js\popper.min.js" />
+    <Content Include="LoginScriptler\Scriptler\vendor\bootstrap\js\tooltip.js" />
+    <Content Include="LoginScriptler\Scriptler\vendor\countdowntime\countdowntime.js" />
+    <Content Include="LoginScriptler\Scriptler\vendor\css-hamburgers\hamburgers.css" />
+    <Content Include="LoginScriptler\Scriptler\vendor\css-hamburgers\hamburgers.min.css" />
+    <Content Include="LoginScriptler\Scriptler\vendor\daterangepicker\daterangepicker.css" />
+    <Content Include="LoginScriptler\Scriptler\vendor\daterangepicker\daterangepicker.js" />
+    <Content Include="LoginScriptler\Scriptler\vendor\daterangepicker\moment.js" />
+    <Content Include="LoginScriptler\Scriptler\vendor\daterangepicker\moment.min.js" />
+    <Content Include="LoginScriptler\Scriptler\vendor\jquery\jquery-3.2.1.min.js" />
+    <Content Include="LoginScriptler\Scriptler\vendor\perfect-scrollbar\perfect-scrollbar.css" />
+    <Content Include="LoginScriptler\Scriptler\vendor\perfect-scrollbar\perfect-scrollbar.min.js" />
+    <Content Include="LoginScriptler\Scriptler\vendor\select2\select2.css" />
+    <Content Include="LoginScriptler\Scriptler\vendor\select2\select2.js" />
+    <Content Include="LoginScriptler\Scriptler\vendor\select2\select2.min.css" />
+    <Content Include="LoginScriptler\Scriptler\vendor\select2\select2.min.js" />
+    <Content Include="Models\Entity\Model1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\Entity\Model1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
+    </Content>
+    <Content Include="Scripts\bootbox.js" />
+    <Content Include="Scripts\bootbox.min.js" />
+    <Content Include="Scripts\bootstrap-datepicker.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <EntityDeploy Include="Models\Entity\Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Entity\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
+    <Content Include="LoginScriptler\Scriptler\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.eot" />
+    <Content Include="LoginScriptler\Scriptler\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.ttf" />
+    <Content Include="LoginScriptler\Scriptler\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.woff" />
+    <Content Include="LoginScriptler\Scriptler\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.woff2" />
+    <Content Include="LoginScriptler\Scriptler\fonts\font-awesome-4.7.0\fonts\FontAwesome.otf" />
+    <Content Include="LoginScriptler\Scriptler\fonts\font-awesome-4.7.0\less\animated.less" />
+    <Content Include="LoginScriptler\Scriptler\fonts\font-awesome-4.7.0\less\bordered-pulled.less" />
+    <Content Include="LoginScriptler\Scriptler\fonts\font-awesome-4.7.0\less\core.less" />
+    <Content Include="LoginScriptler\Scriptler\fonts\font-awesome-4.7.0\less\fixed-width.less" />
+    <Content Include="LoginScriptler\Scriptler\fonts\font-awesome-4.7.0\less\font-awesome.less" />
+    <Content Include="LoginScriptler\Scriptler\fonts\font-awesome-4.7.0\less\icons.less" />
+    <Content Include="LoginScriptler\Scriptler\fonts\font-awesome-4.7.0\less\larger.less" />
+    <Content Include="LoginScriptler\Scriptler\fonts\font-awesome-4.7.0\less\list.less" />
+    <Content Include="LoginScriptler\Scriptler\fonts\font-awesome-4.7.0\less\mixins.less" />
+    <Content Include="LoginScriptler\Scriptler\fonts\font-awesome-4.7.0\less\path.less" />
+    <Content Include="LoginScriptler\Scriptler\fonts\font-awesome-4.7.0\less\rotated-flipped.less" />
+    <Content Include="LoginScriptler\Scriptler\fonts\font-awesome-4.7.0\less\screen-reader.less" />
+    <Content Include="LoginScriptler\Scriptler\fonts\font-awesome-4.7.0\less\stacked.less" />
+    <Content Include="LoginScriptler\Scriptler\fonts\font-awesome-4.7.0\less\variables.less" />
+    <Content Include="LoginScriptler\Scriptler\fonts\font-awesome-4.7.0\scss\font-awesome.scss" />
+    <Content Include="LoginScriptler\Scriptler\fonts\font-awesome-4.7.0\scss\_animated.scss" />
+    <Content Include="LoginScriptler\Scriptler\fonts\font-awesome-4.7.0\scss\_bordered-pulled.scss" />
+    <Content Include="LoginScriptler\Scriptler\fonts\font-awesome-4.7.0\scss\_core.scss" />
+    <Content Include="LoginScriptler\Scriptler\fonts\font-awesome-4.7.0\scss\_fixed-width.scss" />
+    <Content Include="LoginScriptler\Scriptler\fonts\font-awesome-4.7.0\scss\_icons.scss" />
+    <Content Include="LoginScriptler\Scriptler\fonts\font-awesome-4.7.0\scss\_larger.scss" />
+    <Content Include="LoginScriptler\Scriptler\fonts\font-awesome-4.7.0\scss\_list.scss" />
+    <Content Include="LoginScriptler\Scriptler\fonts\font-awesome-4.7.0\scss\_mixins.scss" />
+    <Content Include="LoginScriptler\Scriptler\fonts\font-awesome-4.7.0\scss\_path.scss" />
+    <Content Include="LoginScriptler\Scriptler\fonts\font-awesome-4.7.0\scss\_rotated-flipped.scss" />
+    <Content Include="LoginScriptler\Scriptler\fonts\font-awesome-4.7.0\scss\_screen-reader.scss" />
+    <Content Include="LoginScriptler\Scriptler\fonts\font-awesome-4.7.0\scss\_stacked.scss" />
+    <Content Include="LoginScriptler\Scriptler\fonts\font-awesome-4.7.0\scss\_variables.scss" />
+    <Content Include="LoginScriptler\Scriptler\fonts\Linearicons-Free-v1.0.0\WebFont\Linearicons-Free.eot" />
+    <Content Include="LoginScriptler\Scriptler\fonts\Linearicons-Free-v1.0.0\WebFont\Linearicons-Free.ttf" />
+    <Content Include="LoginScriptler\Scriptler\fonts\Linearicons-Free-v1.0.0\WebFont\Linearicons-Free.woff" />
+    <Content Include="LoginScriptler\Scriptler\fonts\Linearicons-Free-v1.0.0\WebFont\Linearicons-Free.woff2" />
+    <Content Include="LoginScriptler\Scriptler\fonts\montserrat\Montserrat-Black.ttf" />
+    <Content Include="LoginScriptler\Scriptler\fonts\montserrat\Montserrat-BlackItalic.ttf" />
+    <Content Include="LoginScriptler\Scriptler\fonts\montserrat\Montserrat-Bold.ttf" />
+    <Content Include="LoginScriptler\Scriptler\fonts\montserrat\Montserrat-BoldItalic.ttf" />
+    <Content Include="LoginScriptler\Scriptler\fonts\montserrat\Montserrat-ExtraBold.ttf" />
+    <Content Include="LoginScriptler\Scriptler\fonts\montserrat\Montserrat-ExtraBoldItalic.ttf" />
+    <Content Include="LoginScriptler\Scriptler\fonts\montserrat\Montserrat-ExtraLight.ttf" />
+    <Content Include="LoginScriptler\Scriptler\fonts\montserrat\Montserrat-ExtraLightItalic.ttf" />
+    <Content Include="LoginScriptler\Scriptler\fonts\montserrat\Montserrat-Italic.ttf" />
+    <Content Include="LoginScriptler\Scriptler\fonts\montserrat\Montserrat-Light.ttf" />
+    <Content Include="LoginScriptler\Scriptler\fonts\montserrat\Montserrat-LightItalic.ttf" />
+    <Content Include="LoginScriptler\Scriptler\fonts\montserrat\Montserrat-Medium.ttf" />
+    <Content Include="LoginScriptler\Scriptler\fonts\montserrat\Montserrat-MediumItalic.ttf" />
+    <Content Include="LoginScriptler\Scriptler\fonts\montserrat\Montserrat-Regular.ttf" />
+    <Content Include="LoginScriptler\Scriptler\fonts\montserrat\Montserrat-SemiBold.ttf" />
+    <Content Include="LoginScriptler\Scriptler\fonts\montserrat\Montserrat-SemiBoldItalic.ttf" />
+    <Content Include="LoginScriptler\Scriptler\fonts\montserrat\Montserrat-Thin.ttf" />
+    <Content Include="LoginScriptler\Scriptler\fonts\montserrat\Montserrat-ThinItalic.ttf" />
+    <Content Include="LoginScriptler\Scriptler\fonts\poppins\Poppins-Black.ttf" />
+    <Content Include="LoginScriptler\Scriptler\fonts\poppins\Poppins-BlackItalic.ttf" />
+    <Content Include="LoginScriptler\Scriptler\fonts\poppins\Poppins-Bold.ttf" />
+    <Content Include="LoginScriptler\Scriptler\fonts\poppins\Poppins-BoldItalic.ttf" />
+    <Content Include="LoginScriptler\Scriptler\fonts\poppins\Poppins-ExtraBold.ttf" />
+    <Content Include="LoginScriptler\Scriptler\fonts\poppins\Poppins-ExtraBoldItalic.ttf" />
+    <Content Include="LoginScriptler\Scriptler\fonts\poppins\Poppins-ExtraLight.ttf" />
+    <Content Include="LoginScriptler\Scriptler\fonts\poppins\Poppins-ExtraLightItalic.ttf" />
+    <Content Include="LoginScriptler\Scriptler\fonts\poppins\Poppins-Italic.ttf" />
+    <Content Include="LoginScriptler\Scriptler\fonts\poppins\Poppins-Light.ttf" />
+    <Content Include="LoginScriptler\Scriptler\fonts\poppins\Poppins-LightItalic.ttf" />
+    <Content Include="LoginScriptler\Scriptler\fonts\poppins\Poppins-Medium.ttf" />
+    <Content Include="LoginScriptler\Scriptler\fonts\poppins\Poppins-MediumItalic.ttf" />
+    <Content Include="LoginScriptler\Scriptler\fonts\poppins\Poppins-Regular.ttf" />
+    <Content Include="LoginScriptler\Scriptler\fonts\poppins\Poppins-SemiBold.ttf" />
+    <Content Include="LoginScriptler\Scriptler\fonts\poppins\Poppins-SemiBoldItalic.ttf" />
+    <Content Include="LoginScriptler\Scriptler\fonts\poppins\Poppins-Thin.ttf" />
+    <Content Include="LoginScriptler\Scriptler\fonts\poppins\Poppins-ThinItalic.ttf" />
+    <Content Include="LoginScriptler\Scriptler\vendor\bootstrap\css\bootstrap-grid.css.map" />
+    <Content Include="LoginScriptler\Scriptler\vendor\bootstrap\css\bootstrap-grid.min.css.map" />
+    <Content Include="LoginScriptler\Scriptler\vendor\bootstrap\css\bootstrap-reboot.css.map" />
+    <Content Include="LoginScriptler\Scriptler\vendor\bootstrap\css\bootstrap-reboot.min.css.map" />
+    <Content Include="LoginScriptler\Scriptler\vendor\bootstrap\css\bootstrap.css.map" />
+    <Content Include="LoginScriptler\Scriptler\vendor\bootstrap\css\bootstrap.min.css.map" />
+    <Content Include="libman.json" />
+    <Content Include="lib\bootstrap\css\bootstrap-grid.css.map" />
+    <Content Include="lib\bootstrap\css\bootstrap-grid.min.css.map" />
+    <Content Include="lib\bootstrap\css\bootstrap-grid.rtl.css.map" />
+    <Content Include="lib\bootstrap\css\bootstrap-grid.rtl.min.css.map" />
+    <Content Include="lib\bootstrap\css\bootstrap-reboot.css.map" />
+    <Content Include="lib\bootstrap\css\bootstrap-reboot.min.css.map" />
+    <Content Include="lib\bootstrap\css\bootstrap-reboot.rtl.css.map" />
+    <Content Include="lib\bootstrap\css\bootstrap-reboot.rtl.min.css.map" />
+    <Content Include="lib\bootstrap\css\bootstrap-utilities.css.map" />
+    <Content Include="lib\bootstrap\css\bootstrap-utilities.min.css.map" />
+    <Content Include="lib\bootstrap\css\bootstrap-utilities.rtl.css.map" />
+    <Content Include="lib\bootstrap\css\bootstrap-utilities.rtl.min.css.map" />
+    <Content Include="lib\bootstrap\css\bootstrap.css.map" />
+    <Content Include="lib\bootstrap\css\bootstrap.min.css.map" />
+    <Content Include="lib\bootstrap\css\bootstrap.rtl.css.map" />
+    <Content Include="lib\bootstrap\css\bootstrap.rtl.min.css.map" />
+    <Content Include="lib\bootstrap\js\bootstrap.bundle.js.map" />
+    <Content Include="lib\bootstrap\js\bootstrap.bundle.min.js.map" />
+    <Content Include="lib\bootstrap\js\bootstrap.esm.js.map" />
+    <Content Include="lib\bootstrap\js\bootstrap.esm.min.js.map" />
+    <Content Include="lib\bootstrap\js\bootstrap.js.map" />
+    <Content Include="lib\bootstrap\js\bootstrap.min.js.map" />
+    <Content Include="lib\bootstrap\scss\_accordion.scss" />
+    <Content Include="lib\bootstrap\scss\_alert.scss" />
+    <Content Include="lib\bootstrap\scss\_badge.scss" />
+    <Content Include="lib\bootstrap\scss\_breadcrumb.scss" />
+    <Content Include="lib\bootstrap\scss\_button-group.scss" />
+    <Content Include="lib\bootstrap\scss\_buttons.scss" />
+    <Content Include="lib\bootstrap\scss\_card.scss" />
+    <Content Include="lib\bootstrap\scss\_carousel.scss" />
+    <Content Include="lib\bootstrap\scss\_close.scss" />
+    <Content Include="lib\bootstrap\scss\_containers.scss" />
+    <Content Include="lib\bootstrap\scss\_dropdown.scss" />
+    <Content Include="lib\bootstrap\scss\_forms.scss" />
+    <Content Include="lib\bootstrap\scss\_functions.scss" />
+    <Content Include="lib\bootstrap\scss\_grid.scss" />
+    <Content Include="lib\bootstrap\scss\_helpers.scss" />
+    <Content Include="lib\bootstrap\scss\_images.scss" />
+    <Content Include="lib\bootstrap\scss\_list-group.scss" />
+    <Content Include="lib\bootstrap\scss\_maps.scss" />
+    <Content Include="lib\bootstrap\scss\_mixins.scss" />
+    <Content Include="lib\bootstrap\scss\_modal.scss" />
+    <Content Include="lib\bootstrap\scss\_nav.scss" />
+    <Content Include="lib\bootstrap\scss\_navbar.scss" />
+    <Content Include="lib\bootstrap\scss\_offcanvas.scss" />
+    <Content Include="lib\bootstrap\scss\_pagination.scss" />
+    <Content Include="lib\bootstrap\scss\_placeholders.scss" />
+    <Content Include="lib\bootstrap\scss\_popover.scss" />
+    <Content Include="lib\bootstrap\scss\_progress.scss" />
+    <Content Include="lib\bootstrap\scss\_reboot.scss" />
+    <Content Include="lib\bootstrap\scss\_root.scss" />
+    <Content Include="lib\bootstrap\scss\_spinners.scss" />
+    <Content Include="lib\bootstrap\scss\_tables.scss" />
+    <Content Include="lib\bootstrap\scss\_toasts.scss" />
+    <Content Include="lib\bootstrap\scss\_tooltip.scss" />
+    <Content Include="lib\bootstrap\scss\_transitions.scss" />
+    <Content Include="lib\bootstrap\scss\_type.scss" />
+    <Content Include="lib\bootstrap\scss\_utilities.scss" />
+    <Content Include="lib\bootstrap\scss\bootstrap-grid.scss" />
+    <Content Include="lib\bootstrap\scss\bootstrap-reboot.scss" />
+    <Content Include="lib\bootstrap\scss\bootstrap-utilities.scss" />
+    <Content Include="lib\bootstrap\scss\bootstrap.scss" />
+    <Content Include="lib\bootstrap\scss\forms\_floating-labels.scss" />
+    <Content Include="lib\bootstrap\scss\forms\_form-check.scss" />
+    <Content Include="lib\bootstrap\scss\forms\_form-control.scss" />
+    <Content Include="lib\bootstrap\scss\forms\_form-range.scss" />
+    <Content Include="lib\bootstrap\scss\forms\_form-select.scss" />
+    <Content Include="lib\bootstrap\scss\_variables.scss" />
+    <Content Include="lib\bootstrap\scss\forms\_form-text.scss" />
+    <Content Include="lib\bootstrap\scss\forms\_input-group.scss" />
+    <Content Include="lib\bootstrap\scss\forms\_labels.scss" />
+    <Content Include="lib\bootstrap\scss\forms\_validation.scss" />
+    <Content Include="lib\bootstrap\scss\helpers\_clearfix.scss" />
+    <Content Include="lib\bootstrap\scss\helpers\_color-bg.scss" />
+    <Content Include="lib\bootstrap\scss\helpers\_colored-links.scss" />
+    <Content Include="lib\bootstrap\scss\helpers\_position.scss" />
+    <Content Include="lib\bootstrap\scss\helpers\_ratio.scss" />
+    <Content Include="lib\bootstrap\scss\helpers\_stacks.scss" />
+    <Content Include="lib\bootstrap\scss\helpers\_stretched-link.scss" />
+    <Content Include="lib\bootstrap\scss\helpers\_text-truncation.scss" />
+    <Content Include="lib\bootstrap\scss\helpers\_visually-hidden.scss" />
+    <Content Include="lib\bootstrap\scss\helpers\_vr.scss" />
+    <Content Include="lib\bootstrap\scss\mixins\_alert.scss" />
+    <Content Include="lib\bootstrap\scss\mixins\_backdrop.scss" />
+    <Content Include="lib\bootstrap\scss\mixins\_banner.scss" />
+    <Content Include="lib\bootstrap\scss\mixins\_border-radius.scss" />
+    <Content Include="lib\bootstrap\scss\mixins\_box-shadow.scss" />
+    <Content Include="lib\bootstrap\scss\mixins\_breakpoints.scss" />
+    <Content Include="lib\bootstrap\scss\mixins\_buttons.scss" />
+    <Content Include="lib\bootstrap\scss\mixins\_caret.scss" />
+    <Content Include="lib\bootstrap\scss\mixins\_clearfix.scss" />
+    <Content Include="lib\bootstrap\scss\mixins\_color-scheme.scss" />
+    <Content Include="lib\bootstrap\scss\mixins\_container.scss" />
+    <Content Include="lib\bootstrap\scss\mixins\_deprecate.scss" />
+    <Content Include="lib\bootstrap\scss\mixins\_forms.scss" />
+    <Content Include="lib\bootstrap\scss\mixins\_gradients.scss" />
+    <Content Include="lib\bootstrap\scss\mixins\_grid.scss" />
+    <Content Include="lib\bootstrap\scss\mixins\_image.scss" />
+    <Content Include="lib\bootstrap\scss\mixins\_list-group.scss" />
+    <Content Include="lib\bootstrap\scss\mixins\_lists.scss" />
+    <Content Include="lib\bootstrap\scss\mixins\_pagination.scss" />
+    <Content Include="lib\bootstrap\scss\mixins\_reset-text.scss" />
+    <Content Include="lib\bootstrap\scss\mixins\_resize.scss" />
+    <Content Include="lib\bootstrap\scss\mixins\_table-variants.scss" />
+    <Content Include="lib\bootstrap\scss\mixins\_text-truncate.scss" />
+    <Content Include="lib\bootstrap\scss\mixins\_transition.scss" />
+    <Content Include="lib\bootstrap\scss\mixins\_utilities.scss" />
+    <Content Include="lib\bootstrap\scss\mixins\_visually-hidden.scss" />
+    <Content Include="lib\bootstrap\scss\utilities\_api.scss" />
+    <Content Include="lib\bootstrap\scss\vendor\_rfs.scss" />
+    <Content Include="deneme\deneme1\.DS_Store" />
+    <Content Include="deneme\deneme1\css\.DS_Store" />
+    <Content Include="deneme\deneme1\css\bootstrap\.DS_Store" />
+    <Content Include="deneme\deneme1\css\bootstrap\mixins\.DS_Store" />
+    <Content Include="deneme\deneme1\fonts\.DS_Store" />
+    <Content Include="deneme\deneme1\images\.DS_Store" />
+    <Content Include="deneme\deneme1\js\.DS_Store" />
+    <Content Include="deneme\deneme1\scss\.DS_Store" />
+    <Content Include="deneme\deneme1\scss\bootstrap\.DS_Store" />
+    <Content Include="deneme\deneme1\scss\bootstrap\bootstrap-grid.scss" />
+    <Content Include="deneme\deneme1\scss\bootstrap\bootstrap-reboot.scss" />
+    <Content Include="deneme\deneme1\scss\bootstrap\bootstrap.scss" />
+    <Content Include="deneme\deneme1\scss\bootstrap\mixins\_alert.scss" />
+    <Content Include="deneme\deneme1\scss\bootstrap\mixins\_background-variant.scss" />
+    <Content Include="deneme\deneme1\scss\bootstrap\mixins\_badge.scss" />
+    <Content Include="deneme\deneme1\scss\bootstrap\mixins\_border-radius.scss" />
+    <Content Include="deneme\deneme1\scss\bootstrap\mixins\_box-shadow.scss" />
+    <Content Include="deneme\deneme1\scss\bootstrap\mixins\_breakpoints.scss" />
+    <Content Include="deneme\deneme1\scss\bootstrap\mixins\_buttons.scss" />
+    <Content Include="deneme\deneme1\scss\bootstrap\mixins\_caret.scss" />
+    <Content Include="deneme\deneme1\scss\bootstrap\mixins\_clearfix.scss" />
+    <Content Include="deneme\deneme1\scss\bootstrap\mixins\_deprecate.scss" />
+    <Content Include="deneme\deneme1\scss\bootstrap\mixins\_float.scss" />
+    <Content Include="deneme\deneme1\scss\bootstrap\mixins\_forms.scss" />
+    <Content Include="deneme\deneme1\scss\bootstrap\mixins\_gradients.scss" />
+    <Content Include="deneme\deneme1\scss\bootstrap\mixins\_grid-framework.scss" />
+    <Content Include="deneme\deneme1\scss\bootstrap\mixins\_grid.scss" />
+    <Content Include="deneme\deneme1\scss\bootstrap\mixins\_hover.scss" />
+    <Content Include="deneme\deneme1\scss\bootstrap\mixins\_image.scss" />
+    <Content Include="deneme\deneme1\scss\bootstrap\mixins\_list-group.scss" />
+    <Content Include="deneme\deneme1\scss\bootstrap\mixins\_lists.scss" />
+    <Content Include="deneme\deneme1\scss\bootstrap\mixins\_nav-divider.scss" />
+    <Content Include="deneme\deneme1\scss\bootstrap\mixins\_pagination.scss" />
+    <Content Include="deneme\deneme1\scss\bootstrap\mixins\_reset-text.scss" />
+    <Content Include="deneme\deneme1\scss\bootstrap\mixins\_resize.scss" />
+    <Content Include="deneme\deneme1\scss\bootstrap\mixins\_screen-reader.scss" />
+    <Content Include="deneme\deneme1\scss\bootstrap\mixins\_size.scss" />
+    <Content Include="deneme\deneme1\scss\bootstrap\mixins\_table-row.scss" />
+    <Content Include="deneme\deneme1\scss\bootstrap\mixins\_text-emphasis.scss" />
+    <Content Include="deneme\deneme1\scss\bootstrap\mixins\_text-hide.scss" />
+    <Content Include="deneme\deneme1\scss\bootstrap\mixins\_text-truncate.scss" />
+    <Content Include="deneme\deneme1\scss\bootstrap\mixins\_transition.scss" />
+    <Content Include="deneme\deneme1\scss\bootstrap\mixins\_visibility.scss" />
+    <Content Include="deneme\deneme1\scss\bootstrap\utilities\_align.scss" />
+    <Content Include="deneme\deneme1\scss\bootstrap\utilities\_background.scss" />
+    <Content Include="deneme\deneme1\scss\bootstrap\utilities\_borders.scss" />
+    <Content Include="deneme\deneme1\scss\bootstrap\utilities\_clearfix.scss" />
+    <Content Include="deneme\deneme1\scss\bootstrap\utilities\_display.scss" />
+    <Content Include="deneme\deneme1\scss\bootstrap\utilities\_embed.scss" />
+    <Content Include="deneme\deneme1\scss\bootstrap\utilities\_flex.scss" />
+    <Content Include="deneme\deneme1\scss\bootstrap\utilities\_float.scss" />
+    <Content Include="deneme\deneme1\scss\bootstrap\utilities\_overflow.scss" />
+    <Content Include="deneme\deneme1\scss\bootstrap\utilities\_position.scss" />
+    <Content Include="deneme\deneme1\scss\bootstrap\utilities\_screenreaders.scss" />
+    <Content Include="deneme\deneme1\scss\bootstrap\utilities\_shadows.scss" />
+    <Content Include="deneme\deneme1\scss\bootstrap\utilities\_sizing.scss" />
+    <Content Include="deneme\deneme1\scss\bootstrap\utilities\_spacing.scss" />
+    <Content Include="deneme\deneme1\scss\bootstrap\utilities\_stretched-link.scss" />
+    <Content Include="deneme\deneme1\scss\bootstrap\utilities\_text.scss" />
+    <Content Include="deneme\deneme1\scss\bootstrap\utilities\_visibility.scss" />
+    <Content Include="deneme\deneme1\scss\bootstrap\vendor\_rfs.scss" />
+    <Content Include="deneme\deneme1\scss\bootstrap\_alert.scss" />
+    <Content Include="deneme\deneme1\scss\bootstrap\_badge.scss" />
+    <Content Include="deneme\deneme1\scss\bootstrap\_breadcrumb.scss" />
+    <Content Include="deneme\deneme1\scss\bootstrap\_button-group.scss" />
+    <Content Include="deneme\deneme1\scss\bootstrap\_buttons.scss" />
+    <Content Include="deneme\deneme1\scss\bootstrap\_card.scss" />
+    <Content Include="deneme\deneme1\scss\bootstrap\_carousel.scss" />
+    <Content Include="deneme\deneme1\scss\bootstrap\_close.scss" />
+    <Content Include="deneme\deneme1\scss\bootstrap\_code.scss" />
+    <Content Include="deneme\deneme1\scss\bootstrap\_custom-forms.scss" />
+    <Content Include="deneme\deneme1\scss\bootstrap\_dropdown.scss" />
+    <Content Include="deneme\deneme1\scss\bootstrap\_forms.scss" />
+    <Content Include="deneme\deneme1\scss\bootstrap\_functions.scss" />
+    <Content Include="deneme\deneme1\scss\bootstrap\_grid.scss" />
+    <Content Include="deneme\deneme1\scss\bootstrap\_images.scss" />
+    <Content Include="deneme\deneme1\scss\bootstrap\_input-group.scss" />
+    <Content Include="deneme\deneme1\scss\bootstrap\_jumbotron.scss" />
+    <Content Include="deneme\deneme1\scss\bootstrap\_list-group.scss" />
+    <Content Include="deneme\deneme1\scss\bootstrap\_media.scss" />
+    <Content Include="deneme\deneme1\scss\bootstrap\_mixins.scss" />
+    <Content Include="deneme\deneme1\scss\bootstrap\_modal.scss" />
+    <Content Include="deneme\deneme1\scss\bootstrap\_nav.scss" />
+    <Content Include="deneme\deneme1\scss\bootstrap\_navbar.scss" />
+    <Content Include="deneme\deneme1\scss\bootstrap\_pagination.scss" />
+    <Content Include="deneme\deneme1\scss\bootstrap\_popover.scss" />
+    <Content Include="deneme\deneme1\scss\bootstrap\_print.scss" />
+    <Content Include="deneme\deneme1\scss\bootstrap\_progress.scss" />
+    <Content Include="deneme\deneme1\scss\bootstrap\_reboot.scss" />
+    <Content Include="deneme\deneme1\scss\bootstrap\_root.scss" />
+    <Content Include="deneme\deneme1\scss\bootstrap\_spinners.scss" />
+    <Content Include="deneme\deneme1\scss\bootstrap\_tables.scss" />
+    <Content Include="deneme\deneme1\scss\bootstrap\_toasts.scss" />
+    <Content Include="deneme\deneme1\scss\bootstrap\_tooltip.scss" />
+    <Content Include="deneme\deneme1\scss\bootstrap\_transitions.scss" />
+    <Content Include="deneme\deneme1\scss\bootstrap\_type.scss" />
+    <Content Include="deneme\deneme1\scss\bootstrap\_utilities.scss" />
+    <Content Include="deneme\deneme1\scss\bootstrap\_variables.scss" />
+    <Content Include="deneme\deneme1\scss\style.scss" />
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.moneymask.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\ondalik.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Kategoriler\Index.cshtml" />
+    <Content Include="Views\Birimler\Index.cshtml" />
+    <Content Include="Views\Kategoriler\Ekle.cshtml" />
+    <Content Include="Views\Birimler\Kaydet.cshtml" />
+    <Content Include="Views\Kategoriler\GuncelleBilgiGetir.cshtml" />
+    <Content Include="Views\Kategoriler\SilBilgiGetir.cshtml" />
+    <Content Include="Views\Birimler\SilBilgiGetir.cshtml" />
+    <Content Include="Views\Markalar\Index.cshtml" />
+    <Content Include="Views\Markalar\Ekle.cshtml" />
+    <Content Include="Views\Markalar\GuncelleBilgiGetir.cshtml" />
+    <Content Include="Views\Markalar\SilBilgiGetir.cshtml" />
+    <Content Include="Views\Urunler\Index.cshtml" />
+    <Content Include="Views\Urunler\Ekle.cshtml" />
+    <Content Include="Views\Urunler\MiktarEkle.cshtml" />
+    <Content Include="Views\Urunler\GuncelleBilgiGetir.cshtml" />
+    <Content Include="Views\Urunler\SilBilgiGetir.cshtml" />
+    <Content Include="Views\Kullanicilar\Login.cshtml" />
+    <Content Include="Views\Kullanicilar\ResetPassword.cshtml" />
+    <Content Include="Views\Kullanicilar\Kaydol.cshtml" />
+    <Content Include="Views\Kullanicilar\Guncelle.cshtml" />
+    <Content Include="Views\Sepet\Index.cshtml" />
+    <Content Include="Views\Sepet\TotalCount.cshtml" />
+    <Content Include="Views\Urunler\Index2.cshtml" />
+    <Content Include="Views\Satislar\Index.cshtml" />
+    <Content Include="Views\Satislar\SatinAl.cshtml" />
+    <Content Include="Views\Satislar\islem.cshtml" />
+    <Content Include="Views\Satislar\HepsiniSatinAl.cshtml" />
+    <Content Include="Views\Kategoriler\Markalar.cshtml" />
+    <Content Include="Views\Kategoriler\Urunler.cshtml" />
+    <Content Include="Views\Markalar\Urunler.cshtml" />
+    <Content Include="Views\Sepet\SeciliSatinAl.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\_GenelLayout.cshtml" />
+    <Content Include="Views\Home\Hakkimizda.cshtml" />
+    <Content Include="Views\Home\Hizmetlerimiz.cshtml" />
+    <Content Include="Views\Home\Iletisim.cshtml" />
+    <Content Include="Views\Home\Urunler.cshtml" />
+    <Content Include="Views\Home\Kategoriler.cshtml" />
+    <Content Include="Views\Home\Markalar.cshtml" />
+    <Content Include="Views\Shared\_BosLayout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="assets\img\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>59023</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44339/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

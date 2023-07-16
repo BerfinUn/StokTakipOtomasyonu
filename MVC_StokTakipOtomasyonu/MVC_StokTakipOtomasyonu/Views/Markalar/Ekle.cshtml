@@ -1,0 +1,38 @@
+﻿@model MVC_StokTakipOtomasyonu.MyModel.MyMarkalar
+@{
+    ViewBag.Title = "Ekle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Marka Ekleme Sayfası</h2>
+
+<div class="container">
+    <form action="/Markalar/Ekle/" method="post">
+        <div class="form-group">
+            @Html.LabelFor(x => x.Kategoriler.Kategori)
+            @Html.DropDownListFor(x => x.KategoriID, (List<SelectListItem>)ViewBag.l, "---Seçiniz---", new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.KategoriID, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            <label>Marka</label>
+            @*@Html.LabelFor(x=>x.Markalar.Marka)*@
+            @Html.TextBoxFor(x => x.Marka, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.Marka, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            <label>Açıklama</label>
+            @*@Html.LabelFor(x => x.Aciklama)*@
+            @Html.TextBoxFor(x => x.Aciklama, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.Aciklama, "", new { @class = "text-danger" })
+        </div>
+        <div>
+            <button class="btn btn-success">Marka Ekle</button>
+        </div>
+    </form>
+
+</div>
+@section scriptdanger
+{
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+}

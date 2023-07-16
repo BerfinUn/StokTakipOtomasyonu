@@ -1,0 +1,40 @@
+﻿
+
+@model List<MVC_StokTakipOtomasyonu.Models.Entity.Birimler>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+    <h2 align="center">Birim Listesi</h2>
+    <br />
+    <table class="table table-bordered">
+        <thead style="font-weight:bold; color:blue">
+            
+            <tr>
+                <td>ID</td>
+                <td>Birim</td>
+                <td>Açıklama</td>
+                <td>Sil</td>
+                <td>Güncelle</td>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.ID</td>
+                    <td>@item.Birim</td>
+                    <td>@item.Aciklama</td>
+                    <td><a href="/Birimler/SilBilgiGetir/@item.ID" class="btn btn-danger">Sil</a></td>
+                    <td><a href="/Birimler/GuncelleBilgiGetir/@item.ID" class="btn btn-warning">Güncelle</a></td>
+                </tr>
+
+            }
+        </tbody>
+
+
+    </table>
+    <a href="/Birimler/Ekle/" class="btn btn-success" style="margin-top:10px; width:150px; ">Birim Ekle</a>
+</div>

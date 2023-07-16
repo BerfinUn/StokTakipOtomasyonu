@@ -1,0 +1,45 @@
+﻿@model List<MVC_StokTakipOtomasyonu.Models.Entity.Urunler>
+@{
+    ViewBag.Title = "Kategoriler";
+    Layout = "~/Views/Shared/_BosLayout.cshtml";
+}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <link href="~/css/styles.css" rel="stylesheet" />
+
+</head>
+<body style="background-color: #f0f0f0">
+    <div class="form-group" style="background-color:beige">
+        <br />
+        <h1 style="font-weight:bold;color:brown;text-align:center">@ViewBag.kategori Kategorisindeki Ürünler</h1>
+        <div class="form-group" style="text-align:center">
+            @foreach (var item in Model)
+            {
+                <div><b>Ürün Adı:</b> @item.BarkodNo-@item.UrunAdi</div>
+                <div><b>Satış Fiyatı:</b> @item.SatisFiyati</div>
+                <div><b>K.D.V. Tutarı:</b> % @item.KDV</div>
+                <div><b>Birimi: </b> @item.Birimler.Birim</div>
+
+                <hr />
+            }
+
+        </div>
+
+        <footer class="footer py-3 mt-auto" style="background-color: #41435c">
+            <div class="container px-5">
+
+                <p class="m-0 text-center" style="color:white;padding:5px">Copyright &copy; Stok Takip Otomasyonu Web Sitesi 2023</p>
+
+            </div>
+
+        </footer>
+    </div>
+
+
+</body>
+</html>

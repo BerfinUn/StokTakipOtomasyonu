@@ -1,0 +1,320 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MVC_StokTakipOtomasyonuModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Birimler">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Birim" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Aciklama" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Urunler" Relationship="Self.FK_Urunler_Birimler" FromRole="Birimler" ToRole="Urunler" />
+  </EntityType>
+  <EntityType Name="Kategoriler">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Kategori" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Aciklama" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Markalar" Relationship="Self.FK_Markalar_Kategoriler" FromRole="Kategoriler" ToRole="Markalar" />
+    <NavigationProperty Name="Urunler" Relationship="Self.FK_Urunler_Kategoriler" FromRole="Kategoriler" ToRole="Urunler" />
+  </EntityType>
+  <EntityType Name="Markalar">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="KategoriID" Type="Int32" Nullable="false" />
+    <Property Name="Marka" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Aciklama" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Kategoriler" Relationship="Self.FK_Markalar_Kategoriler" FromRole="Markalar" ToRole="Kategoriler" />
+    <NavigationProperty Name="Urunler" Relationship="Self.FK_Urunler_Markalar" FromRole="Markalar" ToRole="Urunler" />
+  </EntityType>
+  <EntityType Name="Musteriler">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AdiSoyadi" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Telefon" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Adres" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Resim" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="KayitTarihi" Type="DateTime" Precision="0" />
+    <Property Name="Puani" Type="Decimal" Precision="28" Scale="2" />
+    <Property Name="Aciklama" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Urunler">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="KategoriID" Type="Int32" Nullable="false" />
+    <Property Name="MarkaID" Type="Int32" Nullable="false" />
+    <Property Name="UrunAdi" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="BarkodNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AlisFiyati" Type="Decimal" Precision="28" Scale="2" Nullable="false" />
+    <Property Name="SatisFiyati" Type="Decimal" Precision="28" Scale="2" Nullable="false" />
+    <Property Name="KDV" Type="Int32" Nullable="false" />
+    <Property Name="BirimID" Type="Int32" Nullable="false" />
+    <Property Name="Tarih" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Aciklama" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Birimler" Relationship="Self.FK_Urunler_Birimler" FromRole="Urunler" ToRole="Birimler" />
+    <NavigationProperty Name="Kategoriler" Relationship="Self.FK_Urunler_Kategoriler" FromRole="Urunler" ToRole="Kategoriler" />
+    <NavigationProperty Name="Markalar" Relationship="Self.FK_Urunler_Markalar" FromRole="Urunler" ToRole="Markalar" />
+    <Property Name="Miktari" Type="Decimal" Nullable="false" Precision="28" Scale="2" />
+    <NavigationProperty Name="Sepet" Relationship="MVC_StokTakipOtomasyonuModel.FK_Sepet_Urunler" FromRole="Urunler" ToRole="Sepet" />
+    <NavigationProperty Name="Satislar" Relationship="MVC_StokTakipOtomasyonuModel.FK_Satislar_Urunler" FromRole="Urunler" ToRole="Satislar" />
+  </EntityType>
+  <Association Name="FK_Urunler_Birimler">
+    <End Role="Birimler" Type="Self.Birimler" Multiplicity="1" />
+    <End Role="Urunler" Type="Self.Urunler" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Birimler">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Urunler">
+        <PropertyRef Name="BirimID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Markalar_Kategoriler">
+    <End Role="Kategoriler" Type="Self.Kategoriler" Multiplicity="1" />
+    <End Role="Markalar" Type="Self.Markalar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kategoriler">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Markalar">
+        <PropertyRef Name="KategoriID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Urunler_Kategoriler">
+    <End Role="Kategoriler" Type="Self.Kategoriler" Multiplicity="1" />
+    <End Role="Urunler" Type="Self.Urunler" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kategoriler">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Urunler">
+        <PropertyRef Name="KategoriID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Urunler_Markalar">
+    <End Role="Markalar" Type="Self.Markalar" Multiplicity="1" />
+    <End Role="Urunler" Type="Self.Urunler" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Markalar">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Urunler">
+        <PropertyRef Name="MarkaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MVC_StokTakipOtomasyonuEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Birimler" EntityType="Self.Birimler" />
+    <EntitySet Name="Kategoriler" EntityType="Self.Kategoriler" />
+    <EntitySet Name="Markalar" EntityType="Self.Markalar" />
+    <EntitySet Name="Musteriler" EntityType="Self.Musteriler" />
+    <EntitySet Name="Urunler" EntityType="Self.Urunler" />
+    <AssociationSet Name="FK_Urunler_Birimler" Association="Self.FK_Urunler_Birimler">
+      <End Role="Birimler" EntitySet="Birimler" />
+      <End Role="Urunler" EntitySet="Urunler" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Markalar_Kategoriler" Association="Self.FK_Markalar_Kategoriler">
+      <End Role="Kategoriler" EntitySet="Kategoriler" />
+      <End Role="Markalar" EntitySet="Markalar" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Urunler_Kategoriler" Association="Self.FK_Urunler_Kategoriler">
+      <End Role="Kategoriler" EntitySet="Kategoriler" />
+      <End Role="Urunler" EntitySet="Urunler" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Urunler_Markalar" Association="Self.FK_Urunler_Markalar">
+      <End Role="Markalar" EntitySet="Markalar" />
+      <End Role="Urunler" EntitySet="Urunler" />
+    </AssociationSet>
+    <EntitySet Name="Kullanicilar" EntityType="MVC_StokTakipOtomasyonuModel.Kullanicilar" />
+    <EntitySet Name="kullaniciRolleri" EntityType="MVC_StokTakipOtomasyonuModel.kullaniciRolleri" />
+    <EntitySet Name="Roller" EntityType="MVC_StokTakipOtomasyonuModel.Roller" />
+    <EntitySet Name="sysdiagrams" EntityType="MVC_StokTakipOtomasyonuModel.sysdiagrams" />
+    <AssociationSet Name="FK_kullaniciRolleri_Kullanicilar" Association="MVC_StokTakipOtomasyonuModel.FK_kullaniciRolleri_Kullanicilar">
+      <End Role="Kullanicilar" EntitySet="Kullanicilar" />
+      <End Role="kullaniciRolleri" EntitySet="kullaniciRolleri" />
+    </AssociationSet>
+    <AssociationSet Name="FK_kullaniciRolleri_Roller" Association="MVC_StokTakipOtomasyonuModel.FK_kullaniciRolleri_Roller">
+      <End Role="Roller" EntitySet="Roller" />
+      <End Role="kullaniciRolleri" EntitySet="kullaniciRolleri" />
+    </AssociationSet>
+    <EntitySet Name="Sepet" EntityType="MVC_StokTakipOtomasyonuModel.Sepet" />
+    <AssociationSet Name="FK_Sepet_Kullanicilar" Association="MVC_StokTakipOtomasyonuModel.FK_Sepet_Kullanicilar">
+      <End Role="Kullanicilar" EntitySet="Kullanicilar" />
+      <End Role="Sepet" EntitySet="Sepet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sepet_Urunler" Association="MVC_StokTakipOtomasyonuModel.FK_Sepet_Urunler">
+      <End Role="Urunler" EntitySet="Urunler" />
+      <End Role="Sepet" EntitySet="Sepet" />
+    </AssociationSet>
+    <EntitySet Name="Satislar" EntityType="MVC_StokTakipOtomasyonuModel.Satislar" />
+    <AssociationSet Name="FK_Satislar_Kullanicilar" Association="MVC_StokTakipOtomasyonuModel.FK_Satislar_Kullanicilar">
+      <End Role="Kullanicilar" EntitySet="Kullanicilar" />
+      <End Role="Satislar" EntitySet="Satislar" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Satislar_Urunler" Association="MVC_StokTakipOtomasyonuModel.FK_Satislar_Urunler">
+      <End Role="Urunler" EntitySet="Urunler" />
+      <End Role="Satislar" EntitySet="Satislar" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Kullanicilar">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="KullaniciAdi" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Sifre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="AdiSoyadi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Telefon" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Adres" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Tarih" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="kullaniciRolleri" Relationship="MVC_StokTakipOtomasyonuModel.FK_kullaniciRolleri_Kullanicilar" FromRole="Kullanicilar" ToRole="kullaniciRolleri" />
+    <NavigationProperty Name="Sepet" Relationship="MVC_StokTakipOtomasyonuModel.FK_Sepet_Kullanicilar" FromRole="Kullanicilar" ToRole="Sepet" />
+    <NavigationProperty Name="Satislar" Relationship="MVC_StokTakipOtomasyonuModel.FK_Satislar_Kullanicilar" FromRole="Kullanicilar" ToRole="Satislar" />
+  </EntityType>
+  <EntityType Name="kullaniciRolleri">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="KullaniciID" Type="Int32" Nullable="false" />
+    <Property Name="RolID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Kullanicilar" Relationship="MVC_StokTakipOtomasyonuModel.FK_kullaniciRolleri_Kullanicilar" FromRole="kullaniciRolleri" ToRole="Kullanicilar" />
+    <NavigationProperty Name="Roller" Relationship="MVC_StokTakipOtomasyonuModel.FK_kullaniciRolleri_Roller" FromRole="kullaniciRolleri" ToRole="Roller" />
+  </EntityType>
+  <EntityType Name="Roller">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Rol" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="kullaniciRolleri" Relationship="MVC_StokTakipOtomasyonuModel.FK_kullaniciRolleri_Roller" FromRole="Roller" ToRole="kullaniciRolleri" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_kullaniciRolleri_Kullanicilar">
+    <End Type="MVC_StokTakipOtomasyonuModel.Kullanicilar" Role="Kullanicilar" Multiplicity="1" />
+    <End Type="MVC_StokTakipOtomasyonuModel.kullaniciRolleri" Role="kullaniciRolleri" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kullanicilar">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="kullaniciRolleri">
+        <PropertyRef Name="KullaniciID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_kullaniciRolleri_Roller">
+    <End Type="MVC_StokTakipOtomasyonuModel.Roller" Role="Roller" Multiplicity="1" />
+    <End Type="MVC_StokTakipOtomasyonuModel.kullaniciRolleri" Role="kullaniciRolleri" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roller">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="kullaniciRolleri">
+        <PropertyRef Name="RolID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Sepet">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="KullaniciID" Type="Int32" Nullable="false" />
+    <Property Name="UrunID" Type="Int32" Nullable="false" />
+    <Property Name="BirimFiyati" Type="Decimal" Nullable="false" Precision="28" Scale="2" />
+    <Property Name="Miktari" Type="Decimal" Nullable="false" Precision="28" Scale="2" />
+    <Property Name="ToplamFiyati" Type="Decimal" Nullable="false" Precision="28" Scale="2" />
+    <Property Name="Tarih" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Saat" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Kullanicilar" Relationship="MVC_StokTakipOtomasyonuModel.FK_Sepet_Kullanicilar" FromRole="Sepet" ToRole="Kullanicilar" />
+    <NavigationProperty Name="Urunler" Relationship="MVC_StokTakipOtomasyonuModel.FK_Sepet_Urunler" FromRole="Sepet" ToRole="Urunler" />
+  </EntityType>
+  <Association Name="FK_Sepet_Kullanicilar">
+    <End Type="MVC_StokTakipOtomasyonuModel.Kullanicilar" Role="Kullanicilar" Multiplicity="1" />
+    <End Type="MVC_StokTakipOtomasyonuModel.Sepet" Role="Sepet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kullanicilar">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Sepet">
+        <PropertyRef Name="KullaniciID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sepet_Urunler">
+    <End Type="MVC_StokTakipOtomasyonuModel.Urunler" Role="Urunler" Multiplicity="1" />
+    <End Type="MVC_StokTakipOtomasyonuModel.Sepet" Role="Sepet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Urunler">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Sepet">
+        <PropertyRef Name="UrunID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Satislar">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="KullaniciID" Type="Int32" Nullable="false" />
+    <Property Name="UrunID" Type="Int32" Nullable="false" />
+    <Property Name="SepetID" Type="Int32" Nullable="false" />
+    <Property Name="BarkodNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="BirimFiyati" Type="Decimal" Nullable="false" Precision="28" Scale="2" />
+    <Property Name="Miktari" Type="Decimal" Nullable="false" Precision="28" Scale="2" />
+    <Property Name="ToplamFiyati" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="KDV" Type="Int32" Nullable="false" />
+    <Property Name="BirimID" Type="Int32" Nullable="false" />
+    <Property Name="Tarih" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Saat" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Kullanicilar" Relationship="MVC_StokTakipOtomasyonuModel.FK_Satislar_Kullanicilar" FromRole="Satislar" ToRole="Kullanicilar" />
+    <NavigationProperty Name="Urunler" Relationship="MVC_StokTakipOtomasyonuModel.FK_Satislar_Urunler" FromRole="Satislar" ToRole="Urunler" />
+  </EntityType>
+  <Association Name="FK_Satislar_Kullanicilar">
+    <End Type="MVC_StokTakipOtomasyonuModel.Kullanicilar" Role="Kullanicilar" Multiplicity="1" />
+    <End Type="MVC_StokTakipOtomasyonuModel.Satislar" Role="Satislar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kullanicilar">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Satislar">
+        <PropertyRef Name="KullaniciID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Satislar_Urunler">
+    <End Type="MVC_StokTakipOtomasyonuModel.Urunler" Role="Urunler" Multiplicity="1" />
+    <End Type="MVC_StokTakipOtomasyonuModel.Satislar" Role="Satislar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Urunler">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Satislar">
+        <PropertyRef Name="UrunID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
